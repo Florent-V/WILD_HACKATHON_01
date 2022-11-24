@@ -26,18 +26,20 @@ SET time_zone = "+00:00";
 -- Structure de la table `item`
 --
 
-CREATE TABLE `item` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `title` varchar(255) NOT NULL
+CREATE TABLE `message` (
+ id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  lastname VARCHAR(80),
+  firstname VARCHAR(80),
+  email VARCHAR(80),
+  `message` TEXT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `item`
 --
 
-INSERT INTO `item` (`id`, `title`) VALUES
-(1, 'Stuff'),
-(2, 'Doodads');
+INSERT INTO `message` (`id`, `lastname`, `firstname`, `email`,`message`) VALUES
+(1, 'Dujardin', 'Jean', '0645673428', 'Hello World' );
 
 --
 -- Index pour les tables exportées

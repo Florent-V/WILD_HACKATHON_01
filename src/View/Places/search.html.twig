@@ -1,0 +1,31 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block stylesheet %}
+	
+{% endblock %}
+
+
+{% block content %}
+
+        <main class="maincontent">
+            <h1> Recherchez votre activité !</h1>
+            <form action="">
+                <div class="form-floating mb-3 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8 text-dark">
+				    <input type="text" class="form-control" id="sport" name="sport" placeholder="Nom du sport">
+				    <label for="sport">Nom du sport</label>
+			    </div>
+            
+            
+            
+            </form>
+        </main>
+
+
+{% endblock %}
+
+{% block javascript %}
+<script src="assets/js/search.js"></script>
+
+
+{% endblock %}

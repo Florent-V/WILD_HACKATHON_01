@@ -1,0 +1,48 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+	<h2 class="titlecontact text-center">Contact us !</h2>
+
+	<section class="container align-content-center">
+
+		<h5 class="text-center mb-5">Feel free to send us a message anyway! ;)</h5>
+
+		<form class="container text-center shadow p-3 mb-5 col-lg-6 bg-body rounded" method="POST">
+			<div class="mb-3 col-12 col-xs-12 col-md-12 col-lg-6 offset-lg-3">
+				<label for="lastname" class="form-label">Lastname</label>
+				<input type="text" class="form-control shadow-sm p-3 mb-2 bg-body rounded" id="lastname" name="lastname" placeholder="Douglas" arial-label="nom" required>
+				{% if errors.lastname %}
+					<div class="text-danger small">{{errors.lastname}}</div>
+				{% endif %}
+			</div>
+
+			<div class="mb-3 col-12 col-xs-12 col-md-12 col-lg-6 offset-lg-3">
+				<label for="firstname" class="form-label">Firstname</label>
+				<input type="text" class="form-control shadow-sm p-3 mb-2 bg-body rounded" id="firstname" name="firstname" placeholder="Lola" arial-label="prenom" required>
+				{% if errors.firstname %}
+					<div class="text-danger small">{{errors.firstname}}</div>
+				{% endif %}
+			</div>
+
+			<div class="mb-3 col-12 col-xs-12 col-md-12 col-lg-6 offset-lg-3">
+				<label for="email" class="form-label">E-mail</label>
+				<input type="text" class="form-control shadow-sm p-3 mb-2 bg-body rounded" id="email" name="email" placeholder="lola@douglas.com" arial-label="email" required>
+				{% if errors.email %}
+					<div class="text-danger small">{{errors.email}}</div>
+				{% endif %}
+			</div>
+
+			<div class="mb-3 col-lg-12">
+				<label for="message" class="form-label">Votre message</label>
+				<textarea class="form-control shadow-sm p-3 mb-5 bg-body rounded" id="message" rows="3" name="message" placeholder="I'm so happy 'cause today I've found my sport... " arial-label="message" required></textarea>
+				{% if errors.message %}
+					<div class="text-danger small">{{errors.message}}</div>
+				{% endif %}
+			</div>
+
+			<div class="col-auto">
+				<input type="submit" class="btn btn-action btn-lg rounded" id="submit"></input>
+		</div>
+
+	</form>
+</section>{% endblock %}
