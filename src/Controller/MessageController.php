@@ -25,7 +25,9 @@ class MessageController extends AbstractController
             $errors = $this->validate($messageContact);
             if (empty($errors)) {
                 $this->messManager->insert($messageContact);
-                header('Location: /validation');
+                return $this->twig->render('Admin/success.html.twig', [
+                    'messagesContact' => $messageContact,
+                ]);
             }
         }
 

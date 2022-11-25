@@ -4,7 +4,6 @@
 {% block stylesheet %}
 	<link rel="stylesheet" href="assets/css/_aroundme.css">
 	<link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
-
 {% endblock %}
 
 
@@ -21,6 +20,10 @@
 <div class="resultContainer">
 
 	<div class="resultMap maparoundme mb-5" id="map"></div>
+	 <div id="popup" class="ol-popup">
+		<a href="#" id="popup-closer" class="ol-popup-closer"></a>
+		<div id="popup-content"></div>
+ 	</div>
 
 	<div
 		class="resultCards">
@@ -54,6 +57,10 @@
 <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 <script>
 
+var container = document.getElementById('popup');
+var content = document.getElementById('popup-content');
+var closer = document.getElementById('popup-closer');
+
 var attribution = new ol.control.Attribution({ collapsible: false });
 
 var map = new ol.Map({
@@ -64,11 +71,12 @@ var map = new ol.Map({
         {
             source: new ol.source.OSM(
                 {
-                    url: 'https://tile.openstreetmap.be/osmbe/{z}/{x}/{y}.png',
+                    url: 'https://a.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
                     attributions: [
                         ol.source.OSM.ATTRIBUTION, 'Tiles courtesy of <a href="https://geo6.be/">GEO-6</a>'
                     ],
-                    maxZoom: 18
+                    maxZoom: 18,
+					crossOrigin: null
                 }
             )
         }
@@ -83,7 +91,11 @@ var map = new ol.Map({
             zoom: 12
         }
     )
-}); {% for place in places %} var layer = new ol.layer.Vector({
+}); 
+
+const positions = [];
+{% for place in places %} 
+	var layer = new ol.layer.Vector({
     source: new ol.source.Vector(
         {
             features: [new ol.Feature(
@@ -94,7 +106,38 @@ var map = new ol.Map({
 }
 )
 });
-map.addLayer(layer); {% endfor %}
+map.addLayer(layer); 
+positions.push(layer);
+
+
+{% endfor %}
+console.log(positions);
+
+var overlay = new ol.Overlay({
+	element: container,
+	autoPan: true,
+	autoPanAnimation: {
+		duration: 250
+	}
+});
+map.addOverlay(overlay);
+
+closer.onclick = function() {
+	overlay.setPosition(undefined);
+	closer.blur();
+	return false;
+};
+
+map.on('singleclick', function (event) {
+	if (map.hasFeatureAtPixel(event.pixel) === true) {
+		var coordinate = event.coordinate;
+		content.innerHTML = '<b>Salle :</b><br/>Adresse :';
+		overlay.setPosition(coordinate);
+	} else {
+		overlay.setPosition(undefined);
+		closer.blur();
+	}
+});
 
 </script>
 {% endblock %}

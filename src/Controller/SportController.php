@@ -99,7 +99,7 @@ class SportController extends AbstractController
 
     public function searchAroundMe(int $page = 1)
     {
-        $coordinate = $this->getCoordinateFromIp('92.184.121.159'); //récupérer celle de l'utilisateur
+        $coordinate = $this->getCoordinateFromIp('90.49.23.153'); //récupérer celle de l'utilisateur
 
 
         // Récupération d'un objet HttpClient :

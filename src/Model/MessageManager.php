@@ -13,8 +13,8 @@ class MessageManager extends AbstractManager
      */
     public function insert(array $messageContact)
     {
-        $query = 'INSERT INTO ' . self::TABLE . ' (lastname, firstname, email, phone, message) VALUES
-        (:lastname, :firstname, :email, :phone, :message)';
+        $query = 'INSERT INTO ' . self::TABLE . ' (lastname, firstname, email, message) VALUES
+        (:lastname, :firstname, :email, :message)';
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':lastname', $messageContact['lastname'], PDO::PARAM_STR);
         $statement->bindValue(':firstname', $messageContact['firstname'], PDO::PARAM_STR);

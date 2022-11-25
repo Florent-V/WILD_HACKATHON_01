@@ -20,4 +20,5 @@ return [
     'contact' => ['MessageController', 'insertMessage'],
     'listmessage' => ['MessageController', 'listMessage'],
     'addsports' => ['SportController', 'addSports',],
+    'validation' => ['MessageController', 'success'],
 ];
