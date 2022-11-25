@@ -1,130 +1,126 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet");
-
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700");
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-body{
-  overflow:hidden;
-  background-color: #f4f6ff;
-}
-
-.container{
-  width:100vw;
-  height:100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Poppins", sans-serif;
-  position: relative;
-  left:6vmin;
-  text-align: center;
-}
-
-.cog-wheel1, .cog-wheel2{
-  transform:scale(0.7);
-}
-
-.cog1, .cog2{
-  width:40vmin;
-  height:40vmin;
-  border-radius:50%;
-  border:6vmin solid #f3c623;
-  position: relative;
-}
-
-
-.cog2{
-  border:6vmin solid #4f8a8b;
-}
-
-.top, .down, .left, .right, .left-top, .left-down, .right-top, .right-down{
-  width:10vmin;
-  height:10vmin;
-  background-color: #f3c623;
-  position: absolute;
-}
-
-.cog2 .top,.cog2  .down,.cog2  .left,.cog2  .right,.cog2  .left-top,.cog2  .left-down,.cog2  .right-top,.cog2  .right-down{
-  background-color: #4f8a8b;
-}
-
-.top{
-  top:-14vmin;
-  left:9vmin;
-}
-
-.down{
-  bottom:-14vmin;
-  left:9vmin;
-}
-
-.left{
-  left:-14vmin;
-  top:9vmin;
-}
-
-.right{
-  right:-14vmin;
-  top:9vmin;
-}
-
-.left-top{
-  transform:rotateZ(-45deg);
-  left:-8vmin;
-  top:-8vmin;
-}
-
-.left-down{
-  transform:rotateZ(45deg);
-  left:-8vmin;
-  top:25vmin;
-}
-
-.right-top{
-  transform:rotateZ(45deg);
-  right:-8vmin;
-  top:-8vmin;
-}
-
-.right-down{
-  transform:rotateZ(-45deg);
-  right:-8vmin;
-  top:25vmin;
-}
-
-.cog2{
-  position: relative;
-  left:-10.2vmin;
-  bottom:10vmin;
-}
-
-h1{
-  color:#142833;
-}
-
-.first-four{
-  position: relative;
-  left:6vmin;
-  font-size:40vmin;
-}
-
-.second-four{
-  position: relative;
-  right:18vmin;
-  z-index: -1;
-  font-size:40vmin;
-}
-
-.wrong-para{
-  font-family: "Montserrat", sans-serif;
-  position: absolute;
-  bottom:15vmin;
-  padding:3vmin 12vmin 3vmin 3vmin;
-  font-weight:600;
-  color:#092532;
-}
+.main{
+    margin-top: 15%;
+  }
+  
+  .st0{fill:#fff}
+  .st2{fill:#5d89af}
+  .st3{fill:#709abf}
+  .st4,.st6{
+    fill:#fff;
+    stroke:#b3dcdf;
+    stroke-miterlimit:10
+  }
+  .st6{
+    stroke:#5d89af;
+    stroke-width:2
+  }
+  .st7,.st8,.st9{
+    stroke:#709abf;
+    stroke-miterlimit:10
+  }
+  
+  .st7{
+    stroke-width:5;
+    stroke-linecap:round;
+    fill:none
+  }
+  .st8,.st9{
+    fill:#fff
+  }
+  .st9{
+    fill:none
+  }
+  .st10{
+    
+  }
+  
+  #cloud1{
+    animation: cloud003 15s linear infinite;
+  }
+  
+  #cloud2{
+    animation: cloud002 25s linear infinite;
+  }
+  
+  #cloud3{
+    animation: cloud003 20s linear infinite;
+  }
+  
+  #cloud4{
+    animation: float 4s linear infinite;
+  }
+  
+  #cloud5{
+    animation: float 8s linear infinite;
+  }
+  
+  #cloud7{
+    animation: float 5s linear infinite;
+  }
+  
+  #tracks{
+    animation: slide 650ms linear infinite;
+  }
+  
+  #bumps{
+    animation: land 10000ms linear infinite;
+  }
+  
+  @keyframes jig {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(1px); }
+      100% { transform: translateY(0px); }
+  }
+  
+  #car-layers{
+    animation: jig 0.35s linear infinite;
+  }
+  
+  @keyframes land {
+      from { transform: translateX(0); }
+      to { transform: translateX(1000px); }
+  }
+  
+  
+  @keyframes slide {
+      from { transform: translateX(0px); }
+      to { transform: translateX(100px); }
+  }
+  
+  /* @keyframes cloudFloat {
+    0% { transform: translateX(0) translateY(3px); }
+    100% { transform: translateX(1000px) translateY(0); }
+  } */
+  
+  @keyframes cloud001 {
+    0% { transform: translateX(-1000px) translateY(3px); }
+    100% { transform: translateX(1000px) translateY(0); }
+  }
+  
+  @keyframes cloud002 {
+    0% { transform: translateX(-1000px) translateY(3px); }
+    100% { transform: translateX(1000px) translateY(0); }
+  }
+  
+  @keyframes cloud003 {
+    0% { transform: translateX(-1000px) translateY(3px); }
+    100% { transform: translateX(1000px) translateY(0); }
+  }
+  
+  @keyframes float {
+      0% { transform: translateY(0px) translateX(0); }
+      50% { transform: translateY(8px) translateX(5px); }
+      100% { transform: translateY(0px) translateX(0); }
+  }
+  
+  #bracefront, #braceback{
+    animation: braces 1s linear infinite;
+  }
+  
+  @keyframes braces {
+      0% { transform: translateX(-2px); }
+    25% { transform: translateX(3px); }
+      50% { transform: translateX(-2px); }
+      75% { transform: translateX(3px); }
+    100% { transform: translateX(-2px); }
+  }
