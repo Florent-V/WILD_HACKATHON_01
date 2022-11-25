@@ -3,76 +3,99 @@
 
 {% block stylesheet %}
 	<link rel="stylesheet" href="assets/css/_aroundme.css">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+	<link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
 
 {% endblock %}
 
 
 {% block content %}
-	<main class="maincontent">
-        <div id="sportPlaces container">
-            <h2 data-city="{{coordinate.city}}" data-latitude="{{coordinate.latitude}}" data-longitude="{{coordinate.longitude}}">
-                Autour de {{coordinate.city}}
-            </h2>
-            {% for place in places %}
-                <div class="location_container" data-latitude="{{place.coordinates.1}}" data-longitude="{{place.coordinates.0}}">
-                    <ul class='placeAttributs'>
-                        <li> <strong>Location:</strong> {{place.name}}</li>
-                        <li><strong>Activity(ies):</strong> {{place.activities}}</li>
-                        <li><strong>Distance:</strong> {{place.distance}}km</li>
-                        <li><strong>Longitude:</strong> {{place.coordinates.0}}</li>
-                        <li><strong>Latitude:</strong> {{place.coordinates.1}}</li>
-                    </ul>
-                    
-                    </div>
-            {% endfor %}
-            <pre>
-            {{ dump(places) }}
-                </pre>
-         <div id="map" style="width: 600px; height: 400px;"></div>
-        </div>
-    </main>
+
+
+<div class="mb-5">
+	<h2 class="aroundmeTitle text-center" data-city="{{coordinate.city}}" data-latitude="{{coordinate.latitude}}" data-longitude="{{coordinate.longitude}}">
+		Autour de
+		{{coordinate.city}}
+	</h2>
+</div>
+
+<div class="resultContainer">
+
+	<div class="resultMap maparoundme mb-5" id="map"></div>
+
+	<div
+		class="resultCards">
+		{% for place in places %}
+			<div class="card resultsaroundme" data-latitude="{{place.coordinates.1}}" data-longitude="{{place.coordinates.0}}">
+				<div class="card-body">
+					<h5 class="card-title">
+						<strong>Location:
+						</strong>
+						{{place.name}}</h5>
+					<p class="card-text">
+						<strong>Activity(ies):
+						</strong>
+						{{place.activities}}</p>
+					<p class="card-text">
+						<strong>Distance:
+						</strong>
+						{{place.distance}}km</p>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+</div>
 
 {% endblock %}
+
+
 
 {% block javascript %}
 <script src="assets/js/openstreetmap.js"></script>
 <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-<script> 
-var attribution = new ol.control.Attribution({
-     collapsible: false
- });
+<script>
 
- var map = new ol.Map({
-     controls: ol.control.defaults({attribution: false}).extend([attribution]),
-     layers: [
-         new ol.layer.Tile({
-             source: new ol.source.OSM({
-                 url: 'https://tile.openstreetmap.be/osmbe/{z}/{x}/{y}.png',
-                 attributions: [ ol.source.OSM.ATTRIBUTION, 'Tiles courtesy of <a href="https://geo6.be/">GEO-6</a>' ],
-                 maxZoom: 18
-             })
-         })
-     ],
-     target: 'map',
-     view: new ol.View({
-         center: ol.proj.fromLonLat([3.066667, 50.633333]),
-         maxZoom: 18,
-         zoom: 12
-     })
- }); 
-  
- {% for place in places %}
-                var layer = new ol.layer.Vector({
-     source: new ol.source.Vector({
-         features: [
-             new ol.Feature({
-                 geometry: new ol.geom.Point(ol.proj.fromLonLat([{{place.coordinates.0}},{{place.coordinates.1}}]))
-             })
-         ]
-     })
- });
- map.addLayer(layer);
-            {% endfor %}
+var attribution = new ol.control.Attribution({ collapsible: false });
+
+var map = new ol.Map({
+    controls: ol.control.defaults(
+        { attribution: false }
+    ).extend([attribution]),
+    layers: [new ol.layer.Tile(
+        {
+            source: new ol.source.OSM(
+                {
+                    url: 'https://tile.openstreetmap.be/osmbe/{z}/{x}/{y}.png',
+                    attributions: [
+                        ol.source.OSM.ATTRIBUTION, 'Tiles courtesy of <a href="https://geo6.be/">GEO-6</a>'
+                    ],
+                    maxZoom: 18
+                }
+            )
+        }
+    )],
+    target: 'map',
+    view: new ol.View(
+        {
+            center: ol.proj.fromLonLat(
+                [3.066667, 50.633333]
+            ),
+            maxZoom: 18,
+            zoom: 12
+        }
+    )
+}); {% for place in places %} var layer = new ol.layer.Vector({
+    source: new ol.source.Vector(
+        {
+            features: [new ol.Feature(
+                {
+                    geometry: new ol.geom.Point(ol.proj.fromLonLat([{{ place.coordinates.0 }}, {{ place.coordinates.1 }}]))
+}
+)]
+}
+)
+});
+map.addLayer(layer); {% endfor %}
+
 </script>
 {% endblock %}

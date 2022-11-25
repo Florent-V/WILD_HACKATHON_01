@@ -1,7 +1,38 @@
-#sportPlaces {
-    margin-top: 100px;
+.aroundmeTitle {
+    margin-top: 10rem;
 }
 
-.placeAttributs {
-    list-style-type: none;
+
+.card {
+    text-align: start;
+    background-color: var(--color-beige);
+    width: 80%;
+    height: 9rem;
 }
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+.resultContainer {
+    width: 100%;
+}
+
+.resultCards {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+    row-gap: 1rem;
+}
+
+
+
+@media screen and (min-width: 660px) {
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr)
+    row-gap: 1rem;
+} 

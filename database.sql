@@ -1,65 +1,78 @@
--- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- MySQL dump 10.13  Distrib 8.0.31, for Linux (x86_64)
 --
--- Client :  localhost
--- Généré le :  Jeu 26 Octobre 2017 à 13:53
--- Version du serveur :  5.7.19-0ubuntu0.16.04.1
--- Version de PHP :  7.0.22-0ubuntu0.16.04.1
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: sportintravel
+-- ------------------------------------------------------
+-- Server version	8.0.31-0ubuntu0.22.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Base de données :  `simple-mvc`
+-- Table structure for table `message`
 --
 
--- --------------------------------------------------------
-
---
--- Structure de la table `item`
---
-
+DROP TABLE IF EXISTS `message`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `message` (
- id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  lastname VARCHAR(80),
-  firstname VARCHAR(80),
-  email VARCHAR(80),
-  `message` TEXT NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int NOT NULL AUTO_INCREMENT,
+  `lastname` varchar(80) DEFAULT NULL,
+  `firstname` varchar(80) DEFAULT NULL,
+  `email` varchar(80) DEFAULT NULL,
+  `message` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Contenu de la table `item`
+-- Dumping data for table `message`
 --
 
-INSERT INTO `message` (`id`, `lastname`, `firstname`, `email`,`message`) VALUES
-(1, 'Dujardin', 'Jean', '0645673428', 'Hello World' );
+LOCK TABLES `message` WRITE;
+/*!40000 ALTER TABLE `message` DISABLE KEYS */;
+INSERT INTO `message` VALUES (1,'Dujardin','Jean','0645673428','Hello World');
+/*!40000 ALTER TABLE `message` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Index pour les tables exportées
+-- Table structure for table `sport`
 --
 
---
--- Index pour la table `item`
---
-ALTER TABLE `item`
-  ADD PRIMARY KEY (`id`);
+DROP TABLE IF EXISTS `sport`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `sport` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- AUTO_INCREMENT pour les tables exportées
+-- Dumping data for table `sport`
 --
 
---
--- AUTO_INCREMENT pour la table `item`
---
-ALTER TABLE `item`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+LOCK TABLES `sport` WRITE;
+/*!40000 ALTER TABLE `sport` DISABLE KEYS */;
+INSERT INTO `sport` VALUES (1,'Duathlon'),(4,'Half marathon'),(5,'Marathon'),(12,'Track And Field'),(19,'Road bicycle racing'),(20,'Track cycling'),(23,'Gravel cycling'),(29,'Hunting'),(34,'Kayak racing'),(36,'Clay shooting'),(37,'Climbing'),(38,'Indoor climbing'),(39,'Big wall climbing'),(40,'Bouldering'),(44,'Ice climbing'),(45,'Mountaineering'),(46,'Glacier hiking'),(49,'Spelunking'),(51,'Canyoning'),(57,'Horse dressage'),(58,'Horse show jumping'),(59,'Horse eventing'),(66,'Skiing'),(67,'Downhill skiing'),(68,'Freeride skiing'),(69,'Freestyle skiing'),(70,'Snowboarding'),(73,'Freestyle snowboarding'),(74,'Baseball'),(76,'Cricket'),(78,'Basketball'),(80,'Streetball'),(81,'Soccer'),(82,'11 a side soccer'),(83,'5 a side soccer'),(84,'Beach soccer'),(86,'Futsal'),(87,'Football'),(89,'Rugby'),(90,'Rugby league'),(91,'Rugby union'),(92,'Beach rugby'),(93,'Volleyball'),(95,'Beach volleyball'),(96,'Handball'),(98,'Field Hockey'),(100,'Dance'),(101,'Ballet'),(103,'Street dance'),(104,'Gymnastics'),(105,'Artistic gymnastics'),(106,'Rhythmic gymnastics'),(109,'Fitness / Cardio Training'),(111,'Pilates'),(112,'Stretching'),(115,'Cardio training'),(127,'Boxing'),(128,'Savate'),(130,'Kickboxing'),(132,'Badminton'),(134,'Tennis'),(139,'Table Tennis'),(141,'Squash'),(143,'Padel'),(147,'Hiking'),(150,'Camping'),(156,'Cross-country Skiing'),(160,'Ice Skating'),(162,'Figure Skating'),(163,'Scooter'),(165,'Freestyle scooter'),(166,'Inline Skating'),(171,'Skateboarding'),(173,'Longboarding'),(174,'Casterboarding'),(175,'Ice Hockey'),(177,'Inline hockey'),(178,'Golf'),(180,'Archery'),(182,'Pétanque / Skittles / Shuffleboard'),(184,'Darts'),(185,'Steel tip darts'),(186,'Diving'),(187,'Free-diving'),(189,'Spearfishing'),(190,'Scuba diving'),(193,'Catamaran'),(198,'Touring SUP'),(211,'Freeride kiteboarding'),(219,'Aquafit'),(221,'Aqua cycling'),(224,'Swimming'),(228,'Synchronized swimming'),(231,'Jigging'),(232,'Dead bait fishing'),(235,'Lure fishing'),(236,'Natural bait trout fishing'),(237,'Catfish fishing'),(238,'Surf fishing'),(239,'Match fishing'),(240,'Bolognese fishing'),(241,'Slip bobber fishing'),(243,'Fly fishing'),(244,'Trolling'),(245,'Crayfish trapping'),(247,'Bottom fishing'),(248,'Ice fishing'),(249,'Squid fishing'),(253,'Sledding'),(257,'Running'),(258,'Cycling'),(261,'Power walking'),(262,'Horseback riding'),(268,'Nordic skiing'),(270,'Golf'),(272,'Underwater diving'),(273,'Sailing'),(279,'Fishing'),(280,'Trail'),(281,'Bmx'),(282,'Road Biking'),(283,'City Bike'),(284,'Hybrid Biking'),(285,'Mountain Biking'),(286,'Equestrian Centre'),(287,'Trail Riding'),(288,'Western Riding'),(289,'Lacrosse'),(290,'Netball'),(292,'Yoga'),(293,'Jiu Jitsu'),(294,'Aikido'),(295,'Kendo'),(296,'Tai Chi'),(297,'Kung Fu'),(298,'Capoiera'),(299,'Sambo'),(300,'Taekwondo'),(301,'Karate'),(302,'Judo'),(303,'Wrestling'),(304,'Fencing'),(305,'Beach Tennis'),(306,'Frontennis'),(307,'Speedball'),(308,'Speed Badminton'),(309,'Peteca'),(310,'Frescobol'),(311,'Basque Rural Sports'),(312,'Racquetball'),(313,'Racquet Sports'),(314,'Ski touring'),(315,'Billiard Sports'),(317,'Yacht sailing'),(318,'Canoeing / Kayaking'),(319,'Stand Up Paddleboarding'),(320,'Skimboard'),(321,'Bodyboard'),(322,'Surfing'),(323,'Windsurfing'),(324,'Kiteboarding'),(325,'Kite'),(326,'Boomerang'),(327,'Frisbee'),(328,'Water Skiing'),(329,'Wakeboarding'),(330,'Tow Sports'),(331,'Aqualearning'),(332,'Predator fishing'),(333,'Salt water fishing'),(334,'Still fishing'),(338,'Indoor running'),(339,'Cross country running'),(340,'Hurdling'),(341,'Relay race'),(347,'Softball'),(348,'Floorball'),(351,'Weight Training'),(353,'Step aerobics'),(355,'Muay Thai'),(363,'Roller derby'),(364,'Inline speed skating'),(365,'Cruiserboarding'),(367,'Roller hockey'),(368,'Ball hockey'),(369,'Snooker'),(370,'Cruise yacht sailing'),(371,'Regatta'),(372,'Surf kayaking'),(373,'Canoe racing'),(374,'Surf SUP'),(375,'Race SUP'),(378,'Freeride windsurfing'),(380,'Formula windsurfing'),(381,'Single line kite'),(382,'Stunt kite'),(385,'Competitive swimming'),(389,'Jogging'),(390,'10K run'),(391,'Triathlon'),(392,'Sport Shooting'),(393,'Air rifle shooting'),(395,'Power Walking'),(396,'All-mountain snowboarding'),(397,'Bodybuilding'),(399,'Fitness inline skating'),(400,'Aggressive inline skating'),(401,'Artistic roller skating'),(402,'Snorkeling'),(403,'Touring kayaking'),(404,'Inline And Street Hockey'),(405,'Water Polo'),(406,'Open water swimming'),(407,'Street Hockey'),(408,'Multi-pitch climbing'),(409,'Slacklining'),(411,'Horseball'),(412,'Equestrian mounted games'),(423,'Touch rugby'),(424,'Contemporary dance'),(425,'Cross-training'),(428,'Gymnastics / Pilates'),(429,'Trampolining'),(430,'Baby gymnastics'),(431,'Swedish gymnastics'),(432,'Voluntary gymnastics'),(438,'Nature hiking'),(439,'Mountain hiking'),(440,'Speed hiking'),(441,'Snow hiking'),(449,'Triathlon'),(450,'Trout fishing'),(452,'Dead minnow fishing'),(455,'Salt water float fishing'),(456,'Sea quiver tip fishing'),(459,'Carp fishing'),(461,'Road Running'),(464,'22 long rifle shooting'),(465,'Rugby sevens'),(466,'Pickleball'),(468,'Soft tip darts'),(469,'American pool'),(470,'English pool'),(471,'Body Surfing'),(473,'Land Kite / Power Kite'),(474,'Power kite'),(476,'Freestyle kiteboarding'),(477,'Wave riding kiteboarding'),(478,'Kiteboard racing'),(479,'Kite landboarding'),(480,'Snowkite'),(482,'Flamenco'),(483,'Urban kick scooter'),(484,'Lifesaving'),(487,'Race Walking‎'),(488,'Nordic Walking'),(489,'Orienteering'),(490,'Orienteering'),(492,'Fitness dance'),(500,'Marathon swimming'),(501,'Paralympic swimming'),(502,'Flippa ball'),(503,'Surf polo'),(504,'Inner tube water polo'),(505,'Aquadance'),(506,'Aquajogging'),(507,'5K run'),(508,'Adventure running'),(509,'Ekiden'),(510,'Fell running'),(511,'Long-distance running'),(512,'Middle-distance running'),(513,'Mountain running'),(514,'Paralympic running'),(515,'Skyrunning'),(516,'Snowshoe running'),(517,'Sprinting'),(518,'Steeplechase'),(519,'Tower running'),(520,'Ultramarathon'),(521,'Wheelchair running'),(522,'Walking'),(523,'Snowshoeing'),(524,'Throwing'),(525,'Discus throw'),(526,'Hammer throw'),(527,'Javelin throw'),(528,'Shot put'),(529,'Jumping'),(530,'High jump'),(531,'Long jump'),(532,'Pole vault'),(533,'Triple jump'),(534,'Brännboll'),(535,'British baseball'),(536,'Corkball'),(537,'Crocker'),(538,'Fuzzball'),(539,'Oină'),(540,'Over-the-line'),(541,'Pesäpallo'),(542,'Rounders'),(543,'Stickball'),(544,'T-Ball'),(545,'Town ball'),(546,'Vitilla'),(547,'Wiffle ball'),(548,'Wireball'),(549,'Blind cricket'),(550,'French cricket'),(551,'Indoor cricket'),(552,'Kilikiti'),(553,'Kwik cricket'),(554,'Stoolball'),(555,'Vigoro'),(556,'Danish longball'),(557,'Matball'),(558,'Kickball'),(559,'Lapta'),(560,'Basque Rural Sports'),(561,'Aizkora proba (wood chopping)'),(562,'Giza-abere probak (dragging games)'),(563,'Harri jasotzea (stone lifting)'),(564,'Harri zulaketa (hole drilling)'),(565,'Ingude altxatzea (anvil lifting)'),(566,'Lasto altxatzea (bale lifting)'),(567,'Lasto botatzea (bale tossing)'),(568,'Lokotx biltzea (cob gathering)'),(569,'Ontzi eramatea (churn carrying)'),(570,'Orga jokoa (cart game)'),(571,'Sega jokoa (scything)'),(572,'Sokatira (tug-of-war)'),(573,'Trontza (sawing)'),(574,'Txinga eramatea (weight carrying)'),(575,'Zaku eramatea (sack carrying)'),(576,'Lumberjack sports'),(577,'Caber toss'),(578,'Logrolling'),(579,'Pole climbing'),(580,'Sawing'),(581,'Wood chopping'),(582,'Blackball'),(583,'Carom billiards'),(584,'Accuracy'),(585,'Aussie Round'),(586,'Consecutive Catch'),(587,'Endurance'),(588,'Long Distance'),(589,'MTA 100'),(590,'Trick Catch/Doubling'),(591,'Ultimate'),(592,'Wheelchair ultimate'),(593,'Martial arts'),(594,'Épée fencing'),(595,'Foil fencing'),(596,'Sabre fencing'),(597,'Wheelchair fencing'),(598,'Grappling'),(599,'Evala'),(600,'Freestyle wrestling'),(601,'Gouren'),(602,'Greco-roman wrestling'),(603,'Mongolian wrestling'),(604,'Mud wrestling'),(605,'Schwingen'),(606,'Shuai jiao'),(607,'Shoot-boxing'),(608,'Lethwei'),(609,'Pradal serey'),(610,'Krav Maga'),(611,'Mixed martial arts'),(612,'Canoe orienteering'),(613,'Foot orienteering'),(614,'Mountain bike orienteering'),(615,'Ski orienteering'),(616,'Trail orienteering'),(617,'Bear hunting'),(618,'Big-game hunting'),(619,'Bowhunting'),(620,'Deer hunting'),(621,'Fox hunting'),(622,'Trapping'),(623,'Turkey hunting'),(624,'Waterfowl hunting'),(625,'Dog hiking'),(626,'Llama hiking'),(627,'Multi-day trekking'),(628,'Angling'),(629,'Big-game fishing'),(630,'Lake fishing'),(631,'Free solo climbing'),(632,'Rock climbing'),(633,'Canoe sailing'),(634,'Backpacking'),(635,'Canoe camping'),(636,'Glamping'),(637,'RVing'),(638,'Rowing'),(639,'Adaptive rowing'),(640,'Coastal rowing'),(641,'Sweep'),(642,'Extreme racing'),(643,'Playboating'),(644,'Snow boating'),(645,'Sprint Kayak'),(646,'Surf skiing'),(647,'Rafting '),(648,'Canoe marathon'),(649,'Canoe polo'),(650,'Canoe slalom'),(651,'Creeking'),(652,'Paracanoe'),(653,'Squirt boating'),(654,'Wildwater canoeing'),(655,'Dragon boat'),(656,'Artistic cycling'),(657,'Freestyle BMX'),(658,'Fatbike'),(659,'Cyclocross'),(660,'Cross-country cycling'),(661,'Trail Riding'),(662,'Paracycling'),(663,'Track paracycling'),(664,'Road paracycling'),(665,'Spinning'),(666,'Motor-paced cycling'),(667,'Keirin'),(668,'Cycle speedway'),(669,'Acrobatic gymnastics'),(670,'Aerobic gymnastics'),(671,'Parkour'),(672,'Tumbling'),(673,'Cheerleading'),(674,'Acro dance'),(675,'Hip-Hop'),(676,'Jazz'),(677,'Latin'),(678,'Foxtrot'),(679,'Swing'),(680,'Tango'),(681,'Zumba'),(682,'Diving'),(683,'10m diving'),(684,'1m diving'),(685,'3m diving'),(686,'Cliff diving'),(687,'High diving'),(688,'Synchronized diving'),(689,'Cave diving'),(690,'Deep diving'),(691,'Finswimming'),(692,'Ice diving'),(693,'Combined driving'),(694,'Endurance riding'),(695,'Polo'),(696,'Steeplechase'),(697,'Tent pegging'),(698,'Para-equestrianism'),(699,'Vaulting'),(700,'Reining'),(701,'High-intensity interval training'),(702,'Tae Bo'),(703,'Bodypump'),(704,'Calisthenics'),(705,'Circuit training'),(706,'Plyometrics'),(707,'Street workout'),(708,'Crossfit'),(709,'Kettlebell lifting'),(710,'Olympic weightlifting'),(711,'Powerlifting'),(712,'Strongman '),(713,'Arena football'),(714,'Canadian football'),(715,'Eight-man football'),(716,'Flag football'),(717,'Nine-man football'),(718,'Six-man football'),(719,'Sprint football'),(720,'Touch football'),(721,'Wheelchair football'),(722,'Flag rugby'),(723,'Mini rugby'),(724,'Wheelchair rugby'),(725,'Bubble soccer'),(726,'Indoor soccer'),(727,'Jorkyball'),(728,'Paralympic soccer'),(729,'Power soccer'),(730,'Roller soccer'),(731,'Street soccer'),(732,'Swamp soccer'),(733,'18 holes golf'),(734,'9 holes golf'),(735,'Beach golf'),(736,'Hickory golf'),(737,'Indoor golf'),(738,'Long drive'),(739,'Park golf'),(740,'Pitch and putt'),(741,'Shotgun start'),(742,'Snow golf'),(743,'Speed golf'),(744,'GolfCross'),(745,'Minigolf'),(746,'Urban golf'),(747,'3x3 basketball'),(748,'Beach Basketball'),(749,'Deaf Basketball'),(750,'Rezball'),(751,'Water Basketball'),(752,'Wheelchair Basketball'),(753,'Slamball'),(754,'Fast5 Netball'),(755,'Indoor Netball'),(756,'Wheelchair Netball'),(757,'Korfball'),(758,'Cestoball'),(759,'Ringball'),(760,'Bandy'),(761,'Floor hockey'),(762,'Unicycle hockey'),(763,'Sledge hockey'),(764,'Ringette'),(765,'Underwater hockey'),(766,'Box lacrosse'),(767,'Field lacrosse'),(768,'Intercrosse'),(769,'Women\'s lacrosse'),(770,'Ball badminton'),(771,'Footvolley'),(772,'Bossaball'),(773,'Footbag net'),(774,'Jokgu'),(775,'Sepak takraw'),(776,'Biribol'),(777,'Fistball'),(778,'Newcomb ball'),(779,'Paralympic volleyball'),(780,'Throwball'),(781,'Short track speed skating'),(782,'Long track speed skating'),(783,'Vert skating'),(784,'Roller skating'),(785,'Extreme skiing'),(786,'Giant slalom'),(787,'Glade skiing'),(788,'Grass skiing'),(789,'Para-alpine skiing'),(790,'Slalom'),(791,'Speed skiing'),(792,'Super-G'),(793,'Biathlon'),(794,'Aerial skiing '),(795,'Big air'),(796,'Half-pipe skiing'),(797,'Mogul'),(798,'Ski ballet'),(799,'Ski cross'),(800,'Skiboarding'),(801,'Slopestyle'),(802,'Paralympic cross-country skiing'),(803,'Roller skiing'),(804,'Ski jumping'),(805,'Ski marathon'),(806,'Skijoring'),(807,'Ski mountaineering'),(808,'Telemark skiing'),(809,'Freestyle slacklining'),(810,'Highlining'),(811,'Slackline yoga'),(812,'Tightrope walking'),(813,'Tricklining'),(814,'Urbanlining'),(815,'Windlining'),(816,'Bobsleigh'),(817,'Luge'),(818,'Street luging'),(819,'Skeleton'),(820,'Extreme sledding'),(821,'Riverboarding'),(822,'Kite skating'),(823,'Big wave'),(824,'Dirtsurfing'),(825,'Flowriding'),(826,'Kneeboarding'),(827,'Lake surfing'),(828,'River surfing'),(829,'Skysurfing'),(830,'Tow-in surfing'),(831,'Freestyle skateboarding'),(832,'Mountainboarding'),(833,'Slalom skateboarding'),(834,'Snow skating'),(835,'Street skateboarding'),(836,'Vert skateboarding'),(837,'Backcountry'),(838,'Big air'),(839,'Freeriding'),(840,'Freestyle'),(841,'Half-pipe'),(842,'Slopestyle'),(843,'Snowboard cross'),(844,'Snowboard racing'),(845,'Sandboarding'),(846,'Shuffleboard'),(847,'Knife throwing'),(848,'Axe throwing'),(849,'Boules'),(850,'Basque bowls'),(851,'Bocce'),(852,'Bocce volo'),(853,'Boccia'),(854,'Bolas criollas'),(855,'Bolo palma'),(856,'Taistelupetankki'),(857,'Skittles'),(858,'Bowling'),(859,'Lawn bowling'),(860,'Bunnock'),(861,'Finnish skittles'),(862,'Fowling'),(863,'Gorodki'),(864,'Kubb'),(865,'Mölkky'),(866,'American darts'),(867,'Cricket darts'),(868,'Dart golf'),(869,'Dartball'),(870,'Lawn darts'),(871,'3D archery'),(872,'Archery tag'),(873,'Crossbow'),(874,'Field archery'),(875,'Para archery'),(876,'Run archery'),(877,'Target archery'),(878,'Paintball'),(879,'Scenario paintball'),(880,'Speedball'),(881,'Woodsball'),(882,'Airsoft'),(883,'Benchrest'),(884,'Bullseye shooting'),(885,'Field shooting'),(886,'Long range'),(887,'Metallic silhouette'),(888,'Muzzleloading'),(889,'Paralympic shooting'),(890,'Plinking'),(891,'Practical shooting'),(892,'Running target'),(893,'Cowboy action shooting'),(894,'Lasertag'),(895,'Sit-down hydrofoil'),(896,'Skurfing'),(897,'Cross Triathlon'),(898,'Paratriathlon'),(899,'Winter triathlon'),(900,'Aquathlon'),(901,'Bike and Run'),(902,'Cross Duathlon'),(903,'Swimrun'),(904,'Acroyoga'),(905,'Ashtanga vinyasa yoga'),(906,'Bhakti yoga'),(907,'Bikram Yoga'),(908,'Chakras'),(909,'Hatha yoga'),(910,'Hot yoga'),(911,'Iyengar Yoga'),(912,'Kundalini'),(913,'Yoga Korunta'),(914,'Mantra yoga'),(915,'Nidra yoga'),(916,'Power yoga'),(917,'Prenatal yoga'),(918,'Rāja yoga'),(919,'Restorative yoga'),(920,'Vinyāsa'),(921,'Yin yoga'),(922,'Flow Yoga'),(923,'Yoga hybrids'),(924,'Meditation'),(925,'Frontenis'),(926,'Frescobol'),(928,'Aerobatics'),(929,'Aeromodeling'),(930,'Air racing'),(931,'Ballooning'),(932,'Gliding'),(933,'Hang gliding'),(934,'Helicopter'),(935,'Microlight'),(936,'Parachuting'),(937,'Base Jumping'),(938,'Wingsuit flying'),(939,'Paragliding'),(940,'Beach handball'),(941,'Czech handball'),(942,'Field handball'),(943,'Classic cross-country Skiing'),(944,'Freestyle cross-country Skiing'),(945,'Towed tubing'),(960,'Air Yoga'),(996,'Kayaking'),(998,'Sailing'),(999,'Curling');
+/*!40000 ALTER TABLE `sport` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2022-11-25 10:42:36

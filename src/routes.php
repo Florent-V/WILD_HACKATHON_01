@@ -10,6 +10,7 @@ return [
     '' => ['HomeController', 'index',],
     'aroundme' => ['SportController', 'searchAroundMe',],
     'search' => ['SportController', 'search',],
+    'api/sport/search' => ['AjaxController', 'searchSport',['search']],
     'items' => ['ItemController', 'index',],
     'items/edit' => ['ItemController', 'edit', ['id']],
     'items/show' => ['ItemController', 'show', ['id']],
@@ -18,4 +19,5 @@ return [
     'about' => ['HomeController', 'about'],
     'contact' => ['MessageController', 'insertMessage'],
     'listmessage' => ['MessageController', 'listMessage'],
+    'addsports' => ['SportController', 'addSports',],
 ];

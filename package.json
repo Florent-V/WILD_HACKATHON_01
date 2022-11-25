@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@geoapify/geocoder-autocomplete": "^1.5.1",
     "@mdi/font": "^7.0.96"
   }
 }

@@ -2,30 +2,41 @@
 
 
 {% block stylesheet %}
-	
+	<link rel="stylesheet" href="assets/css/search.css">
 {% endblock %}
 
 
 {% block content %}
+	<form class="searchForm" action="" method="POST">
+		<h1 class="mb-4">
+			Recherchez votre activité !</h1>
+		<div class="field form-floating mb-3 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8 text-dark">
+			<input type="text" class="form-control" id="sport" name="sport" placeholder="Nom du sport">
+			<label for="sport">Nom du sport</label>
+            <span id="errorSport"></span>
+		</div>
+        <input type="hidden" class="form-control" id="sportID" name="sportID">
+        <input type="hidden" class="form-control" id="lon" name="longitude">
+        <input type="hidden" class="form-control" id="lat" name="latitude">
 
-        <main class="maincontent">
-            <h1> Recherchez votre activité !</h1>
-            <form action="">
-                <div class="form-floating mb-3 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8 text-dark">
-				    <input type="text" class="form-control" id="sport" name="sport" placeholder="Nom du sport">
-				    <label for="sport">Nom du sport</label>
-			    </div>
-            
-            
-            
-            </form>
-        </main>
+		<div id="resultList" class="mb-3 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8 text-dark"></div>
+
+		<div class="field form-floating mb-3 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8 text-dark autocomplete-container" id="autocomplete-container"></div>
+		<button id="validate" class="btn btn-primary">Submit</button>
+	</form>
+    <div id="result">
+
+    <pre>
+        {{ dump(places) }}
+        {{ dump(coordinate) }}
+    </pre>
+    </div>
 
 
 {% endblock %}
 
 {% block javascript %}
-<script src="assets/js/search.js"></script>
+	<script src="assets/js/search.js"></script>
 
 
 {% endblock %}

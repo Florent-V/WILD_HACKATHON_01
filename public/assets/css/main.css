@@ -2,6 +2,16 @@
 @import url(_variables.css);
 @import url(_navbar.css);
 
+html,
+body {
+
+	min-height: 100vh;
+}
+body {
+	display: flex;
+	flex-direction: column;
+	margin-top: auto;
+}
 /* Header */
 #head {
 	background: #181015 url(../images/bg_header.jpg) no-repeat;
@@ -9,7 +19,7 @@
 	min-height: 520px;
 	text-align: center;
 	padding-top: 240px;
-	color: white;
+	color: var(--color-beige);
 	font-family: "Open sans", Helvetica, Arial;
 	font-weight: 300;
 }
@@ -24,7 +34,7 @@
 	font-family: "Open sans", Helvetica, Arial;
 	font-size: 44px;
 	margin-bottom: 30px;
-	color: white;
+	color: var(--color-beige);
 	line-height: 1.15em;
 }
 
@@ -220,6 +230,7 @@ img.pull-left {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	text-align: center;
 }
 
 /* Sidebars */
@@ -330,4 +341,13 @@ img.pull-left {
 
 .firstdivabout {
 	margin-top: 100px;
+}
+
+.searchinabout {
+	font-family: "Open sans", Helvetica, Arial;
+	font-size: 30px;
+}
+
+.buttonabout {
+	width: auto;
 }
