@@ -21,4 +21,5 @@ return [
     'listmessage' => ['MessageController', 'listMessage'],
     'addsports' => ['SportController', 'addSports',],
     'validation' => ['MessageController', 'success'],
+    'notfound' => ['HomeController', 'err404'],
 ];

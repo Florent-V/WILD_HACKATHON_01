@@ -73,7 +73,8 @@ class SportController extends AbstractController
         $client = HttpClient::create();
 
         //Récupération coordonnées de l'utilisateur ici IP en dur pour utilisation localhost
-        $response = $client->request('GET', 'http://api.ipapi.com/' . $ipAdress . '?access_key=2d997fde9198b489e9719e0e83dc6430');
+        $response = $client->request('GET', 'http://api.ipapi.com/' .
+            $ipAdress . '?access_key=2d997fde9198b489e9719e0e83dc6430');
 
         $statusCode = $response->getStatusCode();
         $type = $response->getHeaders()['content-type'][0];
@@ -104,8 +105,8 @@ class SportController extends AbstractController
     {
         //$coordinate = $this->getCoordinateFromIp('185.234.71.162'); //récupérer celle de l'utilisateur MARSEILLE
         //$coordinate = $this->getCoordinateFromIp('185.193.64.70'); //récupérer celle de l'utilisateur QUEBEC
-        //$coordinate = $this->getCoordinateFromIp('185.216.74.142'); //récupérer celle de l'utilisateur LOS ANGELES
-        $coordinate = $this->getCoordinateFromIp('82.232.237.157'); //récupérer celle de l'utilisateur LOOS
+        $coordinate = $this->getCoordinateFromIp('185.216.74.142'); //récupérer celle de l'utilisateur LOS ANGELES
+        //$coordinate = $this->getCoordinateFromIp('82.232.237.157'); //récupérer celle de l'utilisateur LOOS
 
 
         // Récupération d'un objet HttpClient :

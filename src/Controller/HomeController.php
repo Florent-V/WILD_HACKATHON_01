@@ -16,4 +16,9 @@ class HomeController extends AbstractController
     {
         return $this->twig->render('Home/about.html.twig');
     }
+
+    public function err404(): string
+    {
+        return $this->twig->render('Home/404.html.twig');
+    }
 }
