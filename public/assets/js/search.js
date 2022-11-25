@@ -21,7 +21,7 @@ function addressAutocomplete(containerElement, callback, options) {
     inputElement.setAttribute("placeholder", options.placeholder);
     var labelElement = document.createElement("label");
     labelElement.setAttribute('for', 'location');
-    labelElement.innerHTML = 'Entrer une adresse ici';
+    labelElement.innerHTML = 'Enter an address here';
     containerElement.appendChild(inputElement);
     containerElement.appendChild(labelElement);
   

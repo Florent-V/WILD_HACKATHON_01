@@ -73,14 +73,14 @@ class SportController extends AbstractController
         $client = HttpClient::create();
 
         //Récupération coordonnées de l'utilisateur ici IP en dur pour utilisation localhost
-        $response = $client->request('GET', 'http://www.geoplugin.net/json.gp?ip=' . $ipAdress);
+        $response = $client->request('GET', 'http://api.ipapi.com/' . $ipAdress . '?access_key=2d997fde9198b489e9719e0e83dc6430');
 
         $statusCode = $response->getStatusCode();
         $type = $response->getHeaders()['content-type'][0];
 
         $content = '';
 
-        if ($statusCode === 200 && $type === 'application/json; charset=utf-8') {
+        if ($statusCode === 200 && $type === 'application/json') {
             $content = $response->getContent();
             // get the response in JSON format
 
@@ -90,16 +90,22 @@ class SportController extends AbstractController
 
         $coordinate = [];
 
-        $coordinate['latitude'] = $content['geoplugin_latitude'];
-        $coordinate['longitude'] = $content['geoplugin_longitude'];
-        $coordinate['city'] = $content['geoplugin_city'];
+        $coordinate['latitude'] = $content['latitude'];
+        $coordinate['longitude'] = $content['longitude'];
+        $coordinate['city'] = explode(' ', $content['city'])[0];
+        $coordinate['region'] = $content['region_name'];
+        $coordinate['country'] = $content['country_name'];
+        $coordinate['code'] = $content['country_code'];
 
         return $coordinate;
     }
 
     public function searchAroundMe(int $page = 1)
     {
-        $coordinate = $this->getCoordinateFromIp('90.49.23.153'); //récupérer celle de l'utilisateur
+        //$coordinate = $this->getCoordinateFromIp('185.234.71.162'); //récupérer celle de l'utilisateur MARSEILLE
+        //$coordinate = $this->getCoordinateFromIp('185.193.64.70'); //récupérer celle de l'utilisateur QUEBEC
+        //$coordinate = $this->getCoordinateFromIp('185.216.74.142'); //récupérer celle de l'utilisateur LOS ANGELES
+        $coordinate = $this->getCoordinateFromIp('82.232.237.157'); //récupérer celle de l'utilisateur LOOS
 
 
         // Récupération d'un objet HttpClient :
