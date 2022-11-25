@@ -233,42 +233,11 @@ function addressAutocomplete(containerElement, callback, options) {
     /* ajouter valeur aux champs cachés */
     document.getElementById('lon').value = data.properties.lon;
     document.getElementById('lat').value = data.properties.lat;
-
-    searchResult.push(extractLocation(data.properties.lon, data.properties.lat, searchSport.dataset.id, 1));
-
     
     }, {
       placeholder: "Enter an address here"
 });
   
-
-function extractLocation(lon, lat, sport, page) {
-    /*const url = `https://sportplaces.api.decathlon.com/api/v1/places?origin=${lon},${lat}&radius=15&sports=${sport}&page=${page}`;*/
-    const url = `https://sportplaces.api.decathlon.com/api/v1/places?origin=2.3483915,48.8534951&radius=20&sports=87&page=1`;
-    fetch(url)
-        .then(response => response.json())
-        .then(function(locations){
-            console.log(locations);   
-                  
-            console.log(locations.data.features.length);
-            for (let feature of locations.data.features) {
-                //console.log(feature.properties.name)  ;
-                // if (place.properties.name.)
-                // let place = {};
-                // place.name =
-                // place.uuid =
-                // place.distance =
-                // place.google_place_id =
-                // place.adress =
-
-                //console.log(feature);
-            }
-            return locations.data.features;
-
-        })
-
-
-}
 
 
 

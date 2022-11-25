@@ -15,14 +15,12 @@ class SportController extends AbstractController
 
             $page = 1;
 
-            var_dump($searchInfos);
-
             // Récupération d'un objet HttpClient :
             $client = HttpClient::create();
 
             $url = 'https://sportplaces.api.decathlon.com/api/v1/places?origin=' .
                 $searchInfos['longitude'] . ',' .
-                $searchInfos['latitude'] . '&radius=20&sports=' . $searchInfos['sportID'] . '&page=' . $page;
+                $searchInfos['latitude'] . '&radius=50&sports=' . $searchInfos['sportID'] . '&page=' . $page;
 
             $response = $client->request('GET', $url);
 

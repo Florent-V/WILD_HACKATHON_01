@@ -1,8 +1,9 @@
 {% extends 'layout.html.twig' %}
 
-
 {% block stylesheet %}
+<link rel="stylesheet" href="assets/css/_aroundme.css">
 	<link rel="stylesheet" href="assets/css/search.css">
+    
 {% endblock %}
 
 
@@ -24,19 +25,88 @@
 		<div class="field form-floating mb-3 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8 text-dark autocomplete-container" id="autocomplete-container"></div>
 		<button id="validate" class="btn btn-primary">Submit</button>
 	</form>
-    <div id="result">
+    <div id="result"></div>
+    <div id="resultContainer">
 
-    <pre>
-        {{ dump(places) }}
-        {{ dump(coordinate) }}
-    </pre>
+        <div class="resultMap maparoundme mb-5" id="map"></div>
+
+        <div
+            class="resultCards">
+            {% for place in places %}
+                <div class="card resultsaroundme" data-latitude="{{place.coordinates.1}}" data-longitude="{{place.coordinates.0}}">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <strong>Location:
+                            </strong>
+                            {{place.name}} , {{place.adress.address}} {{place.adress.city}}</h5>
+                        <p class="card-text">
+                            <strong>Activity(ies):
+                            </strong>
+                            {{place.activities}}</p>
+                        <p class="card-text">
+                            <strong>Distance:
+                            </strong>
+                            {{place.distance}}km</p>
+                    </div>
+                </div>
+            {% endfor %}
+	    </div>
     </div>
 
 
 {% endblock %}
 
 {% block javascript %}
-	<script src="assets/js/search.js"></script>
+<script src="assets/js/search.js"></script>
+
+
+<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+<script>
+
+var attribution = new ol.control.Attribution({ collapsible: false });
+
+var map = new ol.Map({
+    controls: ol.control.defaults(
+        { attribution: false }
+    ).extend([attribution]),
+    layers: [new ol.layer.Tile(
+        {
+            source: new ol.source.OSM(
+                {
+                    url: 'https://a.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
+                    attributions: [
+                        ol.source.OSM.ATTRIBUTION, 'Tiles courtesy of <a href="https://geo6.be/">GEO-6</a>'
+                    ],
+                    maxZoom: 18,
+                    crossOrigin: null
+                }
+            )
+        }
+    )],
+    target: 'map',
+    view: new ol.View(
+        {
+            center: ol.proj.fromLonLat(
+                [{{coordinate.longitude ?? '3.06666'}}, {{coordinate.latitude ?? '50.633333'}}]
+            ),
+            maxZoom: 18,
+            zoom: 12
+        }
+    )
+}); {% for place in places %} var layer = new ol.layer.Vector({
+    source: new ol.source.Vector(
+        {
+            features: [new ol.Feature(
+                {
+                    geometry: new ol.geom.Point(ol.proj.fromLonLat([{{ place.coordinates.0 }}, {{ place.coordinates.1 }}]))
+}
+)]
+}
+)
+});
+map.addLayer(layer); {% endfor %}
+
+</script>
 
 
 {% endblock %}

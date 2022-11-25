@@ -51,7 +51,6 @@
 
 
 {% block javascript %}
-<script src="assets/js/openstreetmap.js"></script>
 <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 <script>
 
@@ -78,7 +77,7 @@ var map = new ol.Map({
     view: new ol.View(
         {
             center: ol.proj.fromLonLat(
-                [3.066667, 50.633333]
+                [{{coordinate.longitude}}, {{coordinate.latitude}}]
             ),
             maxZoom: 18,
             zoom: 12
