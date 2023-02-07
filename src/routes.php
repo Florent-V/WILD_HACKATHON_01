@@ -10,6 +10,7 @@ return [
     '' => ['HomeController', 'index',],
     'aroundme' => ['SportController', 'searchAroundMe',],
     'search' => ['SportController', 'search',],
+    'hack' => ['SportController', 'hackmdp',],
     'api/sport/search' => ['AjaxController', 'searchSport',['search']],
     'items' => ['ItemController', 'index',],
     'items/edit' => ['ItemController', 'edit', ['id']],
